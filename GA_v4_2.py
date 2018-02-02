@@ -159,10 +159,6 @@ creator.create("Individual", list, typecode='b', fitness=creator.FitnessMin)
 toolbox = base.Toolbox()
 
 def Generate_DevelopmentPlan(Ind, Tot_Dwell):
-
-    print(Tot_Dwell, Density_Lookup ,
-                                                     No_Undev, Lookup, Site_Hectares,
-                                                     PTAL_Enforced, Data_Folder)
    
     Development_Plan = Init.Generate_DevelopmentPlan(Tot_Dwell, Density_Lookup ,
                                                      No_Undev, Lookup, Site_Hectares,

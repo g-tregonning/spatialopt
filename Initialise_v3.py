@@ -121,7 +121,7 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         Dev_Density = Density_Lookup[rand] 
         
         # Extract the ji location of the site
-        ji  = tuple(Lookup[j])   
+        ji  = Lookup[j]
         
 
         # Check development hasn't alread been designated there and that it is
