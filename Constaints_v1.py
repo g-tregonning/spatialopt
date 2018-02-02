@@ -10,7 +10,6 @@ Aspiration would be to calculate on average how many child solutions are removed
 
 def PTAL_Constraint(PTAL, Site, Density):
     # Catch the 150, 250 and 400 uha densities between PTAL 6B (2) and PTAL 4 (5)
-    print(PTAL)
     Site = tuple(Site)
     if Density >= 150 and PTAL[Site] < 6:
         return True
