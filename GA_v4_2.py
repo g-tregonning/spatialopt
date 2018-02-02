@@ -72,9 +72,9 @@ DIRECTORIES
 Defines the directories for loading data and saving results
 """""""""""""""""""""""""""
 
-Data_Folder     = "C:/Users/b6051089/Data/London/"
-Code_Folder     = "C:/Users/b6051089/London_Case_Study/"
-Results_Folder  = "C:/Users/b6051089/London_Case_Study/Results/"
+Data_Folder     = "C:/ProgramData/London/"
+Code_Folder     = "C:/ProgramData/spatialopt/"
+Results_Folder  = "C:/ProgramData/spatialopt/Results/"
 
 """""""""""""""""""""""""""
 PROBLEM FORMULATION
