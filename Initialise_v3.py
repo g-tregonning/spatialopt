@@ -123,7 +123,7 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         # Extract the ji location of the site
         ji  = Lookup[j]
         print(j, ji)
-        print(ji.shape)
+        print(Availability_Raster.shape)
         
 
         # Check development hasn't alread been designated there and that it is
