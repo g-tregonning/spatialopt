@@ -122,8 +122,8 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         
         # Extract the ji location of the site
         ji  = np.array(Lookup[j]).astype(int)
-        print(Development_Plan[j])
-        print(Availability_Raster[ji[0], ji[1]])
+        print(Development_Plan)
+        print(Availability_Raster)
         
 
         # Check development hasn't alread been designated there and that it is
