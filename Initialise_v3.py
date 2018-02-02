@@ -121,14 +121,14 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         Dev_Density = Density_Lookup[rand] 
         
         # Extract the ji location of the site
-        ji  = Lookup[j]
+        ji  = np.array(Lookup[j]).astype(int)
         print(j, ji)
         print(Availability_Raster.shape)
         
 
         # Check development hasn't alread been designated there and that it is
         # available for development (latter needed because of brownfield skewing)
-        if Development_Plan[j] == 0 and Availability_Raster[ji[0], ji[1]]!= 0:
+        if Development_Plan[j] == 0 and Availability_Raster[ji]!= 0:
             # Enforce the PTAL constraint that low development density cannot
             # take place in highly accessibilty areas
             import Constaints_v1 as Constraint
