@@ -40,6 +40,11 @@ To do list:
 The conversion to london devplan and london dwell plan isnt working
 """
 
+# Setting GDAL data environment variable
+
+import os
+os.environ['GDAL_DATA'] = 'C:\ProgramData\Anaconda2\Library\share\gdal'
+
 """""""""""""""""""""""""""
 MODULES USED
 Deap and RasterIO
