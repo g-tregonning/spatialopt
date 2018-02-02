@@ -315,6 +315,13 @@ def Genetic_Algorithm():
 
 
 if __name__ == "__main__":
+
+    import datetime
+
+    with open('log.txt', 'a') as f:
+        f.write('Started at '+ str(datetime.datetime.now()))
+
+
     # Returns the saved PO solution stored during the GA
     hof = Genetic_Algorithm() 
     
@@ -358,4 +365,7 @@ if __name__ == "__main__":
         frmt_Gens.append(Output.Format_Solutions(Gen))
     
     # 
-    Output.Extract_Generation_Pareto_Fronts(frmt_Gens,MinMax_list, Results_Folder, Data_Folder, Site_Hectares)    
+    Output.Extract_Generation_Pareto_Fronts(frmt_Gens,MinMax_list, Results_Folder, Data_Folder, Site_Hectares)
+
+    with open('log.txt', 'a') as f:
+        f.write('Finished at '+ str(datetime.datetime.now()))
