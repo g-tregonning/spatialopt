@@ -121,10 +121,7 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         Dev_Density = Density_Lookup[rand] 
         
         # Extract the ji location of the site
-        ji  = np.array(Lookup[j]).astype(int)
-        print(Development_Plan)
-        print(Availability_Raster)
-        
+        ji  = list(np.array(Lookup[j]).astype(int))
 
         # Check development hasn't alread been designated there and that it is
         # available for development (latter needed because of brownfield skewing)
