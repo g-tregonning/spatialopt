@@ -1,0 +1,31 @@
+Genetic Algorithm Run over London Case Study
+Run completed on 030115-1802
+Modules Utilised
+Initialisation: Initialise_v3
+Evaluation: Evaluate_v7
+Constraint: Constraints_v2
+Output: Outputs_v1
+Problem Formulation
+Spatial Resolution (m^2): 100
+Total Dwellings: 340000
+Minimum Dwellings: 320000
+Maximum Dwellings: 360000
+Site Hectares: 1
+Development Densities (uha): [35, 60, 100, 150, 250, 400]
+PTAL Constraint Enforced: True
+Greenspace Developable: False
+Greenspace Penalty: 5
+Objectives Optimised
+fheat fflood fdist fbrownfield fsprawl 
+Operators Utilised
+Selection: tools.selNSGA2
+Crossover: tools.cxTwoPoint
+Mutation: tools.mutShuffleIndexes, indpb=0.1
+Average retention rate after Dwelling Total Restraint is 100.0%
+Average retention rate after PTAL Restraint is 77.3333333333%
+GA Search Parameters
+Generations: 3
+No of individuals to select: 3
+No of children to produce: 3
+Crossover Probability: 0.7
+Mutation Probability: 0.2
