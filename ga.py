@@ -60,10 +60,10 @@ import random as rndm
 from copy import copy
 
 # Modules for the spatial optimisation framework
-import Initialise_v3 as Init # initialisation module
-import Evaluate_v7 as Eval # Module to calculate and return fitnesses
-import Constraints_v2 as Constraint # Module handles the search constraints
-import Outputs_v1 as Output
+import initialise as Init # initialisation module
+import evaluate as Eval # Module to calculate and return fitnesses
+import constraints as Constraint # Module handles the search constraints
+import outputs as Output
 Modules = ['Initialisation', Init.__name__, 'Evaluation', Eval.__name__, 
            'Constraint', Constraint.__name__, 'Output', Output.__name__]
 
@@ -72,20 +72,20 @@ DIRECTORIES
 Defines the directories for loading data and saving results
 """""""""""""""""""""""""""
 
-Data_Folder     = "C:/ProgramData/London/"
-Code_Folder     = "C:/ProgramData/spatialopt/"
-Results_Folder  = "C:/ProgramData/spatialopt/"
+Data_Folder     = "C:/Users/b6051089/Data/London/"
+Code_Folder     = "C:/Users/b6051089/London_Case_Study/"
+Results_Folder  = "C:/Users/b6051089/London_Case_Study/Results/"
 
 """""""""""""""""""""""""""
 PROBLEM FORMULATION
 Initial Parameters for the Optimisation
 """""""""""""""""""""""""""
-Spat_Res        = 100 # defines the spatial resolution
+Spat_Res        = 200 # defines the spatial resolution
 Tot_Dwell       = 340000 # Target from London Plan
 Dwellings_Min   = 320000 # Max and Minimum figure to act as constraint
 Dwellings_Max   = 360000 # Minimum is genuine minimum from London Plan
                             # Max figure is based on the preious two figures
-Site_Hectares   = (Spat_Res*Spat_Res)/ 10000 # Calculates the size in hecatres 
+Site_Hectares   = (Spat_Res*Spat_Res)/ 40000 # Calculates the size in hecatres
                                              # based on the spatial resolution
                                             # Square the spatial resolution
                                              # to get sq.m then divide by number

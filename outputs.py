@@ -6,7 +6,7 @@ Module to handle the outputs of the Genetic Algorithm search over London
 """
 
 import NonDom_Sort_v3 as NonDom_Sort
-import Initialise_v3 as Init
+import initialise as Init
 
 import numpy as np
 from copy import copy

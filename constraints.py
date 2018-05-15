@@ -24,6 +24,7 @@ def PTAL_Constraint(PTAL, Site, Density):
     # Newest version of the PTAL constraint 
     #print "Density ", Density, " PTAL ", PTAL[Site]
     # Catch the 150, 250 and 400 uha densities between PTAL 6B (2) and PTAL 4 (5)
+    Site = tuple([int(i) for i in Site])
     if Density >= 150:# and PTAL[Site] < 6:
         return True
     # Catch 100 u/ha density in either PTAL 3 (6) or PTAL 2 (7)

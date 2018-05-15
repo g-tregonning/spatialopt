@@ -105,7 +105,7 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
     Agg_Dwell           = 0 #Aggregate number of dwellings assigned 
     
     # Upload the lookup table from the generated file.
-    Lookup = (np.loadtxt("lookup.txt",delimiter=",")).tolist()
+    Lookup = (np.loadtxt("lookup.txt",delimiter=",", dtype=int)).tolist()
     
     # Import the ptal dataset for the constraint 
     file_pointer = rasterIO.opengdalraster(Data_Folder+'ptal.tif') 
@@ -121,7 +121,7 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         Dev_Density = Density_Lookup[rand] 
         
         # Extract the ji location of the site
-        ji  = tuple(map(int,Lookup[j]))  
+        ji = tuple([int(float_that_should_be_integer) for float_that_should_be_integer in Lookup[j]])
         
 
         # Check development hasn't alread been designated there and that it is
@@ -234,7 +234,7 @@ def Generate_London_Proposed_Sites(Development_Plan):
      for j in range(0, len(Lookup)-1):
          if Development_Plan[j] > 1:
              # find the sites yx location over London
-             ji =  tuple(Lookup[j])
+             ji =  tuple([int(i) for i in Lookup[j]])
              Proposed_Sites_List.append(ji)
              
      return Proposed_Sites_List
@@ -255,7 +255,7 @@ def Generate_London_DevPlan(Development_Plan, Data_Folder):
      for j in range(0, len(Lookup)-1):
          
          # find the sites yx location over London
-         ji =  tuple(Lookup[j])
+         ji =  tuple([int(i) for i in tuple(Lookup[j])])
          
          # Add the proposed development to the London wide development plan
          #print Development_Plan[j]

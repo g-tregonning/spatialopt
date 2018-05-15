@@ -60,10 +60,10 @@ import random as rndm
 from copy import copy
 
 # Modules for the spatial optimisation framework
-import Initialise_v3 as Init # initialisation module
-import Evaluate_v7 as Eval # Module to calculate and return fitnesses
-import Constraints_v2 as Constraint # Module handles the search constraints
-import Outputs_v1 as Output
+import initialise as Init # initialisation module
+import evaluate as Eval # Module to calculate and return fitnesses
+import constraints as Constraint # Module handles the search constraints
+import outputs as Output
 Modules = ['Initialisation', Init.__name__, 'Evaluation', Eval.__name__, 
            'Constraint', Constraint.__name__, 'Output', Output.__name__]
 
