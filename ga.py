@@ -73,7 +73,6 @@ Defines the directories for loading data and saving results
 """""""""""""""""""""""""""
 
 Data_Folder     = "C:/Users/b6051089/Data/London/"
-Code_Folder     = "C:/Users/b6051089/London_Case_Study/"
 Results_Folder  = "C:/Users/b6051089/London_Case_Study/Results/"
 
 """""""""""""""""""""""""""
