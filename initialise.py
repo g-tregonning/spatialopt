@@ -129,8 +129,8 @@ def Generate(Tot_Dwell, No_Undev, Availability_Raster, Density_Lookup,
         if Development_Plan[j] == 0 and Availability_Raster[ji]!= 0:
             # Enforce the PTAL constraint that low development density cannot
             # take place in highly accessibilty areas
-            import Constaints_v1 as Constraint
-            if PTAL_Enforced == True and Constraint.PTAL_Constraint(PTAL, ji, Dev_Density) == True  or PTAL_Enforced == False:
+            import constraints
+            if PTAL_Enforced == True and constraints.PTAL_Constraint(PTAL, ji, Dev_Density) == True  or PTAL_Enforced == False:
                 # assign the prescribed development density to the site             
                 Development_Plan[j] = Dev_Density
 
