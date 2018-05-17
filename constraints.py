@@ -18,6 +18,10 @@ Notes:
 
 import numpy as np
 import rasterIO
+import os
+
+
+
 
 def PTAL_Constraint(PTAL, Site, Density):
     #print "PTAL"
@@ -115,12 +119,12 @@ def Check_PTAL_Constraint(Data_Folder):
             
             per_retained = float(100* end_len/ strt_len)
 
-                
+            ptal_constraints_path = os.path.join(os.path.dirname(__file__), 'PTAL_Constraint')
                 # Load the previous list of retaintion rates and add new retention
-            Retained_list = np.loadtxt("PTAL_Constraint.txt",delimiter=",")
+            Retained_list = np.loadtxt(ptal_constraints_path,delimiter=",")
             Updated_Retained_list = np.append(Retained_list,per_retained)
             # Save the updated list
-            np.savetxt("PTAL_Constraint.txt", Updated_Retained_list,  delimiter=',', newline='\n', fmt="%i")
+            np.savetxt(ptal_constraints_path, Updated_Retained_list,  delimiter=',', newline='\n', fmt="%i")
             
             #print '% of solutions retained after PTAL Constraint', per_retained
             
@@ -157,12 +161,13 @@ def Check_TotDwellings_Constraint(Dwellings_Min, Dwellings_Max,
            
             # Calculate the number of solutions retained after the constraint
             per_retained = float(100* end_len/ strt_len)
-            
+
+            dwelling_constraints_path = os.path.join(os.path.dirname(__file__), 'Dwell_Constraint')
             # Load the previous list of retaintion rates and add new retention
-            Retained_list = np.loadtxt("Dwell_Constraint.txt",delimiter=",")
+            Retained_list = np.loadtxt(dwelling_constraints_path,delimiter=",")
             Updated_Retained_list = np.append(Retained_list,per_retained)
             # Save the updated list
-            np.savetxt("Dwell_Constraint.txt", Updated_Retained_list,  delimiter=',', newline='\n',fmt="%i")
+            np.savetxt(dwelling_constraints_path, Updated_Retained_list,  delimiter=',', newline='\n',fmt="%i")
             
             
             
