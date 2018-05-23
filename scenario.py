@@ -2,7 +2,7 @@ class Run:
     def __init__(self,
                  data_folder="C:/Users/b6051089/Data/London/",
                  results_folder="C:/Users/b6051089/London_Case_Study/Results/",
-                 resolution=100,
+                 resolution=200,
                  total_dwellings=340000,
                  minimum_dwellings=320000,
                  maximum_dwellings=360000,
