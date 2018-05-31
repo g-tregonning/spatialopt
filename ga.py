@@ -56,15 +56,15 @@ import initialise # initialisation module
 import evaluate as Eval # Module to calculate and return fitnesses
 import constraints as Constraint # Module handles the search constraints
 import outputs as Output
-from scenario import Run
+from scenario import Scenario
 
 
-def start_run(run=Run()):
+def start_run(scenario=Scenario()):
     def Generate_DevelopmentPlan(Ind, Tot_Dwell):
 
-        Development_Plan = initialise.Generate_DevelopmentPlan(Tot_Dwell, run.dwelling_density,
-                                                               No_Undev, lookup, run.site_area,
-                                                               run.ptal_enforced, run.data_folder)
+        Development_Plan = initialise.Generate_DevelopmentPlan(Tot_Dwell, scenario.dwelling_density,
+                                                               No_Undev, lookup, scenario.site_area,
+                                                               scenario.ptal_enforced, scenario.data_folder)
 
         return Ind(Development_Plan)
 
@@ -79,21 +79,21 @@ def start_run(run=Run()):
         # London_DevPlan = Init.Generate_London_DevPlan(Development_Plan, Data_Folder)
         Proposed_Sites = initialise.Generate_London_Proposed_Sites(Development_Plan)
 
-        London_DwellPlan = initialise.Generate_London_DwellPlan(Development_Plan, run.data_folder,
-                                                          run.site_area)
+        London_DwellPlan = initialise.Generate_London_DwellPlan(Development_Plan, scenario.data_folder,
+                                                                scenario.site_area)
 
-        Heat_Fit = Eval.Calc_fheat(London_DwellPlan, run.data_folder)
+        Heat_Fit = Eval.Calc_fheat(London_DwellPlan, scenario.data_folder)
 
-        Flood_Fit = Eval.Calc_fflood(London_DwellPlan, run.data_folder)
+        Flood_Fit = Eval.Calc_fflood(London_DwellPlan, scenario.data_folder)
 
-        Dist_Fit = Eval.Calc_fdist(Proposed_Sites, run.greenspace_development)
+        Dist_Fit = Eval.Calc_fdist(Proposed_Sites, scenario.greenspace_development)
 
-        Brownfield_Fit = Eval.Calc_fbrownfield(London_DwellPlan, run.data_folder)
+        Brownfield_Fit = Eval.Calc_fbrownfield(London_DwellPlan, scenario.data_folder)
 
-        Sprawl_Fit = Eval.Calc_fsprawl(London_DwellPlan, run.data_folder)
+        Sprawl_Fit = Eval.Calc_fsprawl(London_DwellPlan, scenario.data_folder)
 
-        if run.greenspace_development == True:
-            Greenspace_Fit = Eval.Calc_fgreenspace(London_DwellPlan, run.data_folder)
+        if scenario.greenspace_development == True:
+            Greenspace_Fit = Eval.Calc_fgreenspace(London_DwellPlan, scenario.data_folder)
 
             return Heat_Fit, Flood_Fit, Dist_Fit, Brownfield_Fit, Sprawl_Fit, Greenspace_Fit,
 
@@ -140,7 +140,11 @@ def start_run(run=Run()):
 
         return hof
 
-    Problem_Parameters = run.__dict__
+    Problem_Parameters = ['Spatial Resolution (m^2)', scenario.resolution, 'Total Dwellings', scenario.total_dwellings,
+                          'Minimum Dwellings', scenario.minimum_dwellings, 'Maximum Dwellings', scenario.maximum_dwellings,
+                          'Site Hectares', scenario.site_area, 'Development Densities (uha)', scenario.dwelling_density,
+                          'PTAL Constraint Enforced', scenario.ptal_enforced, 'Greenspace Developable',
+                          scenario.greenspace_development, 'Greenspace Penalty', scenario.greenspace_penalty]
 
 
 
@@ -152,7 +156,7 @@ def start_run(run=Run()):
     # and we optimise a series of numbers which correspond with these sites.
     # The function called creates a lookup based on our preferences, saves it and
     # returns the list.
-    lookup = initialise.Generate_Lookup(run.greenspace_development, run.data_folder)
+    lookup = initialise.Generate_Lookup(scenario.greenspace_development, scenario.data_folder)
     No_Undev = len(lookup)
     # So we know how long to make the chromosome
 
@@ -174,9 +178,9 @@ def start_run(run=Run()):
     #creating fitness class, negative weight implies minimisation 
     """""""""""""""""""""""""""""""""""""""
     # FITNESS - Defining the number of fitness
-    if run.greenspace_development == True:
+    if scenario.greenspace_development == True:
         # fheat, fflood, fbrownfield, fgreenspace
-        creator.create("FitnessMin", base.Fitness, weights=(-1.0, -1.0, -1.0, -1.0, -1.0, (-1 * run.greenspace_penalty),))
+        creator.create("FitnessMin", base.Fitness, weights=(-1.0, -1.0, -1.0, -1.0, -1.0, (-1 * scenario.greenspace_penalty),))
     else:
         # fheat, fflood, fbrownfield
         creator.create("FitnessMin", base.Fitness, weights=(-1.0, -1.0, -1.0, -1.0, -1.0,))
@@ -193,10 +197,10 @@ def start_run(run=Run()):
 
     ######
 
-    toolbox.register("individual", Generate_DevelopmentPlan, creator.Individual, run.total_dwellings)
+    toolbox.register("individual", Generate_DevelopmentPlan, creator.Individual, scenario.total_dwellings)
     toolbox.register("population", tools.initRepeat, list, toolbox.individual)
 
-    if run.greenspace_development == True:
+    if scenario.greenspace_development == True:
         Fitnesses = ['fheat', 'fflood', 'fdist', 'fbrownfield', 'fsprawl', 'fgreenspacel']
 
     else:
@@ -247,15 +251,15 @@ def start_run(run=Run()):
     # Solution is saved to a sol_list. This for display purposes.
 
     # Constraint to ensure the number of dwellings falls within the targets
-    toolbox.decorate("select", Constraint.Check_TotDwellings_Constraint(run.minimum_dwellings, run.maximum_dwellings,
-                                                                        run.data_folder, run.site_area))
+    toolbox.decorate("select", Constraint.Check_TotDwellings_Constraint(scenario.minimum_dwellings, scenario.maximum_dwellings,
+                                                                        scenario.data_folder, scenario.site_area))
     toolbox.decorate("select", Track_Offspring())
     # Constraint to handle PTAL enforcment
-    if run.ptal_enforced == True:
-        toolbox.decorate("select", Constraint.Check_PTAL_Constraint(run.data_folder))
+    if scenario.ptal_enforced == True:
+        toolbox.decorate("select", Constraint.Check_PTAL_Constraint(scenario.data_folder))
 
     MU = 500  # Number of individuals to select for the next generation
-    NGEN = 100  # Number of generations
+    NGEN = 4  # Number of generations
     # Think this will need to Be really high
     LAMBDA = 500  # Number of children to produce at each generation
     CXPB = 0.7  # Probability of mating two individuals
@@ -273,7 +277,7 @@ def start_run(run=Run()):
         Complete_Solutions.append(PO)
     
     # Update the results folder to the new directory specifically for this run
-    Results_Folder = Output.New_Results_Folder(run.results_folder)
+    Results_Folder = Output.New_Results_Folder(scenario.results_folder)
     
     # Format the solutions so they are compatible with the output functions
     # Gives each a number as well as added the fitness values to from:
@@ -294,10 +298,10 @@ def start_run(run=Run()):
                               GA_Parameters, Fitnesses)
     
     # Extract all the Pareto fronts using the normalised solutions
-    Output.Extract_ParetoFront_and_Plot(Normalised_Solutions, True, Results_Folder, run.data_folder,run.site_area)
+    Output.Extract_ParetoFront_and_Plot(Normalised_Solutions, True, Results_Folder, scenario.data_folder, scenario.site_area)
     
     # Extract all the Pareto fronts using the solutions retaining their true values.
-    Output.Extract_ParetoFront_and_Plot(frmt_Complete_Solutions, False, Results_Folder, run.data_folder,run.site_area)
+    Output.Extract_ParetoFront_and_Plot(frmt_Complete_Solutions, False, Results_Folder, scenario.data_folder, scenario.site_area)
 
     # GENERATIONS OUTPUTS
     
@@ -308,7 +312,7 @@ def start_run(run=Run()):
         frmt_Gens.append(Output.Format_Solutions(Gen))
     
     # 
-    Output.Extract_Generation_Pareto_Fronts(frmt_Gens,MinMax_list, Results_Folder, run.data_folder, run.site_area)
+    Output.Extract_Generation_Pareto_Fronts(frmt_Gens, MinMax_list, Results_Folder, scenario.data_folder, scenario.site_area)
 
 if __name__ == '__main__':
 
