@@ -177,7 +177,7 @@ def frmt_CSV(Set):
     New_Set= []
     for solution in Copied_Set:
         new_solution = []
-        new_solution.append(solution[0])
+        # new_solution.append(solution[0])
         ObjFunc = np.array(solution[2])
         for x in ObjFunc:
             new_solution.append(x)
@@ -225,8 +225,21 @@ def Plot_Format(Set):
     return New_Set    
     
 def Plot(Pareto_Set, MOPO, Solutions, X_Axis, Y_Axis, Results_Folder, Norm):
+    """
+
+    :param Pareto_Set: list
+    :param MOPO: list
+    :param Solutions: list 
+    :param X_Axis: int
+    :param Y_Axis: int
+    :param Results_Folder: str 
+    :param Norm: bool
+    :return: None
+    
+    
     # Format it to a numpy array type so [:, Axis] works
     # Returns in the form [SolNum Obj1, Obj2, ...]
+    """
     Pareto_Set  = Plot_Format(Pareto_Set)
     MOPO        = Plot_Format(MOPO)
     Solutions   = Plot_Format(Solutions)
@@ -270,7 +283,8 @@ def New_Results_Folder(Results_Folder):
     New_Results_Folder = Results_Folder+'Run_'+date_time_stamp+'/'
       
     # Check it doesn't already exists and then makes it a new directory
-    if not os.path.exists(New_Results_Folder): os.makedirs(New_Results_Folder)  
+    if not os.path.exists(New_Results_Folder):
+        os.makedirs(New_Results_Folder)
     
     return New_Results_Folder
 
@@ -326,7 +340,7 @@ def Extract_ParetoFront_and_Plot(Solutions, Norm, Results_Folder, Data_Folder,Si
     Save_to_CSV(Solutions, Obj_Functions, Norm, Results_Folder)    
     
     for PF in PF_Comb_list:
-        PO_PF = NonDom_Sort.Sort(Solutions, PF)
+        PO_PF = NonDom_Sort.Sort(Solutions, PF) # list
         print 'The length of Pareto Front between ', Get_String(PF[0]),' and ',Get_String(PF[1]),' is ',len(PO_PF)
         Save_Pareto_Set(PO_PF, PF, Norm, Results_Folder)
         Plot(PO_PF, MOPOs, Solutions, PF[0], PF[1], Results_Folder, Norm)
