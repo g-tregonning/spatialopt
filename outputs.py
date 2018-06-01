@@ -251,9 +251,9 @@ def Plot(Pareto_Set, MOPO, Solutions, X_Axis, Y_Axis, Results_Folder, Norm):
     
    
     if Norm == True:
-        Output_File = Results_Folder+'Norm_Plot_'+X_Axis+'_against_'+Y_Axis+'_'+date_time_stamp+'.jpeg'        
+        Output_File = Results_Folder+'Norm_Plot_'+X_Axis+'_against_'+Y_Axis+'_'+date_time_stamp+'.png'
     else:
-         Output_File = Results_Folder+'Plot_'+X_Axis+'_against_'+Y_Axis+'_'+date_time_stamp+'.jpeg'
+         Output_File = Results_Folder+'Plot_'+X_Axis+'_against_'+Y_Axis+'_'+date_time_stamp+'.png'
     
     plt.savefig(Output_File)
     print "Plotted Objective ", X_Axis, ' against ', Y_Axis

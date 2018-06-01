@@ -49,7 +49,11 @@ from deap import algorithms
 from deap import base 
 from deap import creator # creates the initial individuals
 from deap import tools # defines operators
+import rasterIO
+
 import numpy as np
+import math
+import random as rndm
 from copy import copy
 # Modules for the spatial optimisation framework
 import initialise # initialisation module
