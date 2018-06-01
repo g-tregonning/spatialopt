@@ -263,7 +263,7 @@ def start_run(scenario=Scenario()):
         toolbox.decorate("select", Constraint.Check_PTAL_Constraint(scenario.data_folder))
 
     MU = 500  # Number of individuals to select for the next generation
-    NGEN = 4  # Number of generations
+    NGEN = 100  # Number of generations
     # Think this will need to Be really high
     LAMBDA = 500  # Number of children to produce at each generation
     CXPB = 0.7  # Probability of mating two individuals

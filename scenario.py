@@ -1,7 +1,7 @@
 class Scenario:
     def __init__(self,
                  data_folder="C:/Users/b6051089/Data/London/",
-                 results_folder="C:/Users/b6051089/London_Case_Study/Results/",
+                 results_folder="E:/PhD/Runs/Development_size/4_hectare/",
                  resolution=200,
                  total_dwellings=340000,
                  minimum_dwellings=320000,

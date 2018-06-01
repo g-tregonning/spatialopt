@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3ca7d0-5fb0-48df-a15a-56f6d87a7a99" name="Default" comment="re-imported rasterIO and maths/random generator modules to resolve jpeg code. Changed JPEG to PNG to test.">
+    <list default="true" id="cc3ca7d0-5fb0-48df-a15a-56f6d87a7a99" name="Default" comment="change dn">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FalsePO_Set_fheat_fflood_fdist_fbrownfield_fsprawl__Fitness.csv" afterPath="$PROJECT_DIR$/FalsePO_Set_fheat_fflood_fdist_fbrownfield_fsprawl__Fitness.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TruePO_Set_fheat_fflood_fdist_fbrownfield_fsprawl__Fitness.csv" afterPath="$PROJECT_DIR$/TruePO_Set_fheat_fflood_fdist_fbrownfield_fsprawl__Fitness.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/outputs.py" afterPath="$PROJECT_DIR$/outputs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dwell_Constraint.txt" afterPath="$PROJECT_DIR$/Dwell_Constraint.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PTAL_Constraint.txt" afterPath="$PROJECT_DIR$/PTAL_Constraint.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ga.py" afterPath="$PROJECT_DIR$/ga.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario.py" afterPath="$PROJECT_DIR$/scenario.py" />
     </list>
     <ignored path="Dwell_Constraint.txt" />
     <ignored path="PTAL_Constraint.txt" />
@@ -19,21 +20,33 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="scenario.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scenario.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scenario.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
+            <state relative-caret-position="187">
+              <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="outputs.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ga.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ga.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2516">
+              <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+              <folding>
+                <element signature="e#1474#1501#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="outputs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/outputs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="209" column="46" lean-forward="false" selection-start-line="209" selection-start-column="46" selection-end-line="209" selection-end-column="46" />
+            <state relative-caret-position="313">
+              <caret line="218" column="25" lean-forward="true" selection-start-line="218" selection-start-column="25" selection-end-line="218" selection-end-column="25" />
               <folding>
                 <element signature="e#125#161#0" expanded="true" />
               </folding>
@@ -54,8 +67,8 @@
       <file leaf-file-name="test_plot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_plot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="43" column="69" lean-forward="false" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+            <state relative-caret-position="372">
+              <caret line="50" column="80" lean-forward="true" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -93,18 +106,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ga.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ga.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1394">
-              <caret line="82" column="55" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="55" />
-              <folding>
-                <element signature="e#1474#1501#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="itertools.py" pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.PyCharmCE2017.1/system/python_stubs/-1787624747/itertools.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -136,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PTAL en</find>
       <find>PTAL_en</find>
       <find>modules</find>
       <find>operators</find>
@@ -164,8 +164,9 @@
       <find>plot</find>
       <find>save_to_csv</find>
       <find>\</find>
-      <find>loadtxt</find>
       <find>Generate_London_DevPlan</find>
+      <find>loadtxt</find>
+      <find>4</find>
     </findStrings>
     <replaceStrings>
       <replace>run.data_folder</replace>
@@ -183,9 +184,9 @@
         <option value="$PROJECT_DIR$/constraints.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/evaluate.py" />
-        <option value="$PROJECT_DIR$/scenario.py" />
-        <option value="$PROJECT_DIR$/ga.py" />
         <option value="$PROJECT_DIR$/outputs.py" />
+        <option value="$PROJECT_DIR$/ga.py" />
+        <option value="$PROJECT_DIR$/scenario.py" />
         <option value="$PROJECT_DIR$/tests/test_plot.py" />
       </list>
     </option>
@@ -443,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527843476808</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added test module to determine if the outputs module is working or not. It is working therefore problem is coming from somewhere else. TBC">
+      <created>1527871635589</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1527871635589</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -511,7 +519,8 @@
     <MESSAGE value="changed resolution and number of generations back to normal" />
     <MESSAGE value="renamed run object to scenario and put back problem parameters" />
     <MESSAGE value="re-imported rasterIO and maths/random generator modules to resolve jpeg code. Changed JPEG to PNG to test." />
-    <option name="LAST_COMMIT_MESSAGE" value="re-imported rasterIO and maths/random generator modules to resolve jpeg code. Changed JPEG to PNG to test." />
+    <MESSAGE value="added test module to determine if the outputs module is working or not. It is working therefore problem is coming from somewhere else. TBC" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test module to determine if the outputs module is working or not. It is working therefore problem is coming from somewhere else. TBC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -904,41 +913,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ga.py">
+    <entry file="file://$PROJECT_DIR$/outputs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="55" lean-forward="false" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="55" />
+        <state relative-caret-position="313">
+          <caret line="218" column="25" lean-forward="true" selection-start-line="218" selection-start-column="25" selection-end-line="218" selection-end-column="25" />
           <folding>
-            <element signature="e#1474#1501#0" expanded="true" />
+            <element signature="e#125#161#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="43" column="69" lean-forward="false" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+        <state relative-caret-position="372">
+          <caret line="50" column="80" lean-forward="true" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scenario.py">
+    <entry file="file://$PROJECT_DIR$/ga.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="36" lean-forward="false" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
-          <folding />
+        <state relative-caret-position="-2516">
+          <caret line="5" column="33" lean-forward="true" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding>
+            <element signature="e#1474#1501#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/outputs.py">
+    <entry file="file://$PROJECT_DIR$/scenario.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="209" column="46" lean-forward="false" selection-start-line="209" selection-start-column="46" selection-end-line="209" selection-end-column="46" />
-          <folding>
-            <element signature="e#125#161#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="11" column="46" lean-forward="true" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
