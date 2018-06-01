@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc3ca7d0-5fb0-48df-a15a-56f6d87a7a99" name="Default" comment="change dn">
+    <list default="true" id="cc3ca7d0-5fb0-48df-a15a-56f6d87a7a99" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Dwell_Constraint.txt" afterPath="$PROJECT_DIR$/Dwell_Constraint.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PTAL_Constraint.txt" afterPath="$PROJECT_DIR$/PTAL_Constraint.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ga.py" afterPath="$PROJECT_DIR$/ga.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scenario.py" afterPath="$PROJECT_DIR$/scenario.py" />
     </list>
     <ignored path="Dwell_Constraint.txt" />
     <ignored path="PTAL_Constraint.txt" />
@@ -451,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527871635589</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="changed the number of iterations to 100 and added the hardrive as the results folder">
+      <created>1527872124908</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1527872124908</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -520,7 +525,8 @@
     <MESSAGE value="renamed run object to scenario and put back problem parameters" />
     <MESSAGE value="re-imported rasterIO and maths/random generator modules to resolve jpeg code. Changed JPEG to PNG to test." />
     <MESSAGE value="added test module to determine if the outputs module is working or not. It is working therefore problem is coming from somewhere else. TBC" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test module to determine if the outputs module is working or not. It is working therefore problem is coming from somewhere else. TBC" />
+    <MESSAGE value="changed the number of iterations to 100 and added the hardrive as the results folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed the number of iterations to 100 and added the hardrive as the results folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
