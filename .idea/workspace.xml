@@ -456,7 +456,14 @@
       <option name="project" value="LOCAL" />
       <updated>1527872124908</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changed the number of iterations to 100 and added the hardrive as the results folder">
+      <created>1527872131347</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1527872131347</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
