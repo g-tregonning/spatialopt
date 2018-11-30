@@ -55,6 +55,7 @@ import numpy as np
 import math
 import random as rndm
 from copy import copy
+
 # Modules for the spatial optimisation framework
 import initialise # initialisation module
 import evaluate as Eval # Module to calculate and return fitnesses
@@ -62,6 +63,19 @@ import constraints as Constraint # Module handles the search constraints
 import outputs as Output
 from scenario import Scenario
 
+import time
+
+#from datetime import datetime
+# from scoop import futures
+
+ #log time for each module in GA
+    # def log(event):
+        # print('{} - {}'.format(event, datetime.now()))
+start_time = time.asctime()
+running_time_start = time.clock()
+
+print "START. start time = ", start_time
+print "Running time =", int(running_time_start), " minutes"
 
 def start_run(scenario=Scenario()):
     def Generate_DevelopmentPlan(Ind, Tot_Dwell):
@@ -69,7 +83,7 @@ def start_run(scenario=Scenario()):
         Development_Plan = initialise.Generate_DevelopmentPlan(Tot_Dwell, scenario.dwelling_density,
                                                                No_Undev, lookup, scenario.site_area,
                                                                scenario.ptal_enforced, scenario.data_folder)
-
+        # log('Created Development Plan')
         return Ind(Development_Plan)
 
     """""""""""""""""""""""""""""""""""""""
@@ -85,6 +99,7 @@ def start_run(scenario=Scenario()):
 
         London_DwellPlan = initialise.Generate_London_DwellPlan(Development_Plan, scenario.data_folder,
                                                                 scenario.site_area)
+        #log('Calculated Number of Dwellings')
 
         Heat_Fit = Eval.Calc_fheat(London_DwellPlan, scenario.data_folder)
 
@@ -256,14 +271,14 @@ def start_run(scenario=Scenario()):
 
     # Constraint to ensure the number of dwellings falls within the targets
     toolbox.decorate("select", Constraint.Check_TotDwellings_Constraint(scenario.minimum_dwellings, scenario.maximum_dwellings,
-                                                                        scenario.data_folder, scenario.site_area))
+                                                                            scenario.data_folder, scenario.site_area))
     toolbox.decorate("select", Track_Offspring())
     # Constraint to handle PTAL enforcment
     if scenario.ptal_enforced == True:
         toolbox.decorate("select", Constraint.Check_PTAL_Constraint(scenario.data_folder))
 
     MU = 500  # Number of individuals to select for the next generation
-    NGEN = 100  # Number of generations
+    NGEN = scenario.number_of_iterations  # Number of generations
     # Think this will need to Be really high
     LAMBDA = 500  # Number of children to produce at each generation
     CXPB = 0.7  # Probability of mating two individuals
@@ -274,49 +289,50 @@ def start_run(scenario=Scenario()):
                      CXPB, 'Mutation Probability', MUTPB]
 
     # Returns the saved PO solution stored during the GA
-    hof = Genetic_Algorithm() 
-    
+    hof = Genetic_Algorithm()
+    # log('Completed Genetic Algorithm')
     Complete_Solutions = copy(Sols)
     for PO in hof:
         Complete_Solutions.append(PO)
-    
+
     # Update the results folder to the new directory specifically for this run
     Results_Folder = Output.New_Results_Folder(scenario.results_folder)
-    
+
     # Format the solutions so they are compatible with the output functions
     # Gives each a number as well as added the fitness values to from:
     # [ Sol_Num, Sites, Fitnesses]
     frmt_Complete_Solutions = Output.Format_Solutions(Complete_Solutions)
-    
+
     # Extract the minimum and maximum performances for each objective
     # To allow for solutions to be normalised
     MinMax_list = Output.Normalise_MinMax(frmt_Complete_Solutions)
-    
-    # Normalise the formatted Solution list using the Min and Maxs for 
-    # each objective function    
+
+    # Normalise the formatted Solution list using the Min and Maxs for
+    # each objective function
     Normalised_Solutions = Output.Normalise_Solutions(MinMax_list, frmt_Complete_Solutions)
-    
-    
+
+
     # Output a file detailing all the run parameters
     Output.Output_Run_Details(Results_Folder, Modules, Operators, Problem_Parameters,
                               GA_Parameters, Fitnesses)
-    
+
     # Extract all the Pareto fronts using the normalised solutions
     Output.Extract_ParetoFront_and_Plot(Normalised_Solutions, True, Results_Folder, scenario.data_folder, scenario.site_area)
-    
+
     # Extract all the Pareto fronts using the solutions retaining their true values.
     Output.Extract_ParetoFront_and_Plot(frmt_Complete_Solutions, False, Results_Folder, scenario.data_folder, scenario.site_area)
 
     # GENERATIONS OUTPUTS
-    
+
     # Create a new array to hold the formated generations
-    frmt_Gens = []    
+    frmt_Gens = []
     for Gen in Gens:
         # For each generation, format it and append it to the frmt_Gens list
         frmt_Gens.append(Output.Format_Solutions(Gen))
-    
-    # 
+
+    #
     Output.Extract_Generation_Pareto_Fronts(frmt_Gens, MinMax_list, Results_Folder, scenario.data_folder, scenario.site_area)
+    # log('Saved iteration results')
 
 if __name__ == '__main__':
 
