@@ -11,7 +11,7 @@ class Scenario:
                  ptal_enforced=True,
                  greenspace_development=False,
                  greenspace_penalty=5,
-                 number_of_iterations=100):
+                 number_of_iterations=2):
 
         self.data_folder = data_folder
         self.results_folder = results_folder

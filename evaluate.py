@@ -23,13 +23,13 @@ import rasterIO
 import numpy as np
       
 
-def Calc_fheat(London_Dwell_Plan, Data_Folder):
+def Calc_fheat(London_Dwell_Plan, Heat):
     # Calculates a heat risk fitness based on hazard and vulnerability    
     
     
     # Import the heat hazard raster for the calculation
     # Making a double to handle large integers
-    Heat    = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Heat_Hazard.tif') ,1))
+    # Heat    = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Heat_Hazard.tif') ,1))
     # Need a vulneraility Raster!!!
     
     # Need to incoprate Vulneraility
@@ -46,11 +46,11 @@ def Calc_fheat(London_Dwell_Plan, Data_Folder):
     #print 'fheat ', HeatRisk_per_Capita 
     return HeatRisk_per_Capita
 
-def Calc_fflood(London_Dwell_Plan, Data_Folder):
+def Calc_fflood(London_Dwell_Plan, Floodzone):
     # Floodzone Raster, 1 in 100 and 1 in 1000 floodzone represented by 1 and 0.1 respectively
     # Recently realised that it should be the other way round as 1 in 1000 are actually at a lower risk 
     # of flooding     
-    Floodzone    = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Floodzone.tif') ,1))
+    # Floodzone    = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Floodzone.tif') ,1))
 
 
     FloodRisk = np.multiply(London_Dwell_Plan, Floodzone)
@@ -59,7 +59,7 @@ def Calc_fflood(London_Dwell_Plan, Data_Folder):
     FloodRisk_per_Capita = np.sum(FloodRisk)/np.sum(London_Dwell_Plan)
     return FloodRisk_per_Capita
    
-def Calc_fbrownfield(London_DwellPlan, Data_Folder):
+def Calc_fbrownfield(London_DwellPlan, Brownfield):
     # Calculate the number of proposed development sites which fall on 
     # brownfield sites. Target in London Plan is 96%, not enforcing this, 
     # will just use it as a comparison. 
@@ -70,7 +70,7 @@ def Calc_fbrownfield(London_DwellPlan, Data_Folder):
     # Number of brownfield dwelings iis calculated based on the dev plan 
     # multiplied by the brownfield availability raster  
     
-    Brownfield = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Brownfield.tif'),1))
+    # Brownfield = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Brownfield.tif'),1))
     
     # Calculate the number of proposed sites
     Total_Dev_Sites = np.count_nonzero(London_DwellPlan)
@@ -85,14 +85,14 @@ def Calc_fbrownfield(London_DwellPlan, Data_Folder):
     #return Per_Brownfield
     return Per_Not_Brownfield
     
-def Calc_fsprawl(London_Dwell_Plan, Data_Folder):
+def Calc_fsprawl(London_Dwell_Plan, Urban_Extent):
     # Intend to do the non-linear neighourhood method again
     # Only prolem would be quite computationaly intensive
     # Therefore I'm just going to multiply the two   
     
     # Combine the development plan with wider London array
     
-    Urban_Extent    = rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Urban.tif'),1)
+    # Urban_Extent    = rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Urban.tif'),1)
     
     Total_Dev_Sites = np.count_nonzero(London_Dwell_Plan)
     
@@ -103,10 +103,10 @@ def Calc_fsprawl(London_Dwell_Plan, Data_Folder):
     
     return Per_Not_Urban   
     
-def Calc_fgreenspace(London_Dwell_Plan, Data_Folder):
+def Calc_fgreenspace(London_Dwell_Plan, Greenspace):
     # Calculate the number of greenspace sites developed on
 
-    Greenspace       = rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Greenspace.tif'),1)
+    # Greenspace       = rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder+'Greenspace.tif'),1)
 
     # Total_Dev_Sites  = np.count_nonzero(London_Dwell_Plan)
     

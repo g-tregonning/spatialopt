@@ -73,7 +73,7 @@ import time
         # print('{} - {}'.format(event, datetime.now()))
 start_time = time.asctime()
 running_time_start = time.clock()
- 
+
 print "START. start time = ", start_time
 print "Running time =", int(running_time_start), " minutes"
 
@@ -91,6 +91,11 @@ def start_run(scenario=Scenario()):
     # Evaluate functions and constraint handling
     """""""""""""""""""""""""""""""""""""""
 
+    flood = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(scenario.data_folder+'Floodzone.tif') ,1))
+    heat_island = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(scenario.data_folder+'Heat_Hazard.tif') ,1))
+    brownfield = np.double(rasterIO.readrasterband(rasterIO.opengdalraster(scenario.data_folder+'Brownfield.tif'),1))
+    sprawl = rasterIO.readrasterband(rasterIO.opengdalraster(scenario.data_folder+'Urban.tif'),1)
+
     def Evaluate(Development_Plan):
         # Generate the London Dwellings Plan i.e. number of dwellings on each site
 
@@ -101,15 +106,15 @@ def start_run(scenario=Scenario()):
                                                                 scenario.site_area)
         #log('Calculated Number of Dwellings')
 
-        Heat_Fit = Eval.Calc_fheat(London_DwellPlan, scenario.data_folder)
+        Heat_Fit = Eval.Calc_fheat(London_DwellPlan, heat_island)
 
-        Flood_Fit = Eval.Calc_fflood(London_DwellPlan, scenario.data_folder)
+        Flood_Fit = Eval.Calc_fflood(London_DwellPlan, flood)
 
         Dist_Fit = Eval.Calc_fdist(Proposed_Sites, scenario.greenspace_development)
 
-        Brownfield_Fit = Eval.Calc_fbrownfield(London_DwellPlan, scenario.data_folder)
+        Brownfield_Fit = Eval.Calc_fbrownfield(London_DwellPlan, brownfield)
 
-        Sprawl_Fit = Eval.Calc_fsprawl(London_DwellPlan, scenario.data_folder)
+        Sprawl_Fit = Eval.Calc_fsprawl(London_DwellPlan, sprawl)
 
         if scenario.greenspace_development == True:
             Greenspace_Fit = Eval.Calc_fgreenspace(London_DwellPlan, scenario.data_folder)
@@ -158,6 +163,8 @@ def start_run(scenario=Scenario()):
                                   stats=stats, halloffame=hof)
 
         return hof
+
+    np.double(rasterIO.readrasterband(rasterIO.opengdalraster(Data_Folder + 'Floodzone.tif'), 1))
 
     Problem_Parameters = ['Spatial Resolution (m^2)', scenario.resolution, 'Total Dwellings', scenario.total_dwellings,
                           'Minimum Dwellings', scenario.minimum_dwellings, 'Maximum Dwellings', scenario.maximum_dwellings,
