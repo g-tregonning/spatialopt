@@ -73,7 +73,7 @@ import time
         # print('{} - {}'.format(event, datetime.now()))
 start_time = time.asctime()
 running_time_start = time.clock()
-
+ 
 print "START. start time = ", start_time
 print "Running time =", int(running_time_start), " minutes"
 
